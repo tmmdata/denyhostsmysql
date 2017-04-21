@@ -1,8 +1,8 @@
 #!/usr/bin/python
 #
 # Jose' Vargas <https://github.com/josev814>
-# This plugin allows deny host to send a blocked ip to slack as a notification
-# To enable the plugin edit /etc/denyhosts.conf
+# This plugin allows DenyHostsMySQL to send a blocked ip to slack as a notification
+# To enable the plugin edit /etc/denyhostsmysql.conf
 # Uncomment PLUGIN_DENY and point it to the location of this file
 # Edit lines 16 and 18 to your slack web hook url and channel
 # chmod +x this file so that it's executable, or the logs will show plugin returned 32256
