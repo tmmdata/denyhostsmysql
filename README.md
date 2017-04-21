@@ -2,7 +2,7 @@ DenyHostsMySQL
 =========
 
 DenyHostsMySQL is a port of the DenyHosts utility developed by Phil Schwartz and maintained by a
-number of developers which was aimed to thwart sshd (ssh server) brute force attacks.  DenyHostsMySQL modified DenyHosts to thwart attacks against MySQL
+number of developers which was aimed to thwart mysqld (MySQL server) brute force attacks.  DenyHostsMySQL modified DenyHosts to thwart attacks against MySQL
 
 Please refer to https://github.com/tmmdata/denyhostsmysql for more information.
 
