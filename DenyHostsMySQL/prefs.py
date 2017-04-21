@@ -21,7 +21,7 @@ class Prefs(dict):
                        'SUSPICIOUS_LOGIN_REPORT_ALLOWED_HOSTS': 'yes',
                        'HOSTNAME_LOOKUP': 'yes',
                        'SYSLOG_REPORT': 'no',
-                       'DAEMON_LOG': '/var/log/denyhosts',
+                       'DAEMON_LOG': '/var/log/denyhostsmysql',
                        'DAEMON_SLEEP': '30s',
                        'DAEMON_PURGE': '1h',
                        'DAEMON_LOG_TIME_FORMAT': None,
@@ -41,7 +41,7 @@ class Prefs(dict):
                        'SMTP_USERNAME': None,
                        'SMTP_PASSWORD': None,
                        'SMTP_DATE_FORMAT': "%a, %d %b %Y %H:%M:%S %z",
-                       'SSHD_FORMAT_REGEX': None,
+                       'MYSQLD_FORMAT_REGEX': None,
                        'FAILED_ENTRY_REGEX': None,
                        'FAILED_ENTRY_REGEX2': None,
                        'FAILED_ENTRY_REGEX3': None,
@@ -179,7 +179,7 @@ class Prefs(dict):
                 print("Missing configuration parameter: %s" % name_reqd)
                 if name_reqd == 'DENY_THRESHOLD_INVALID':
                     print("\nNote: The configuration parameter DENY_THRESHOLD has been renamed")
-                    print("      DENY_THRESHOLD_INVALID.  Please update your DenyHosts configuration")
+                    print("      DENY_THRESHOLD_INVALID.  Please update your DenyHostsMySQL configuration")
                     print("      file to reflect this change.")
 
                     if 'DENY_THRESHOLD' in self.__data:
@@ -230,7 +230,7 @@ class Prefs(dict):
     def dump_to_logger(self):
         keys = list(self.__data.keys())
         keys.sort()
-        info("DenyHosts configuration settings:")
+        info("DenyHostsMySQL configuration settings:")
         for key in keys:
             if key == 'USERDEF_FAILED_ENTRY_REGEX':
                 for rx in self.__data[key]:

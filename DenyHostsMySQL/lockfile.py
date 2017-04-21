@@ -31,7 +31,7 @@ class LockFile(object):
 
         except Exception as e:
             pid = self.get_pid()
-            die("DenyHosts could not obtain lock (pid: %s)" % pid, e)
+            die("DenyHostsMySQL could not obtain lock (pid: %s)" % pid, e)
 
         s = "%s\n" % os.getpid()
         if sys.version_info < (3, 0):
@@ -52,4 +52,4 @@ class LockFile(object):
             os.unlink(self.lockpath)
         except Exception as e:
             if die_:
-                die("Error deleting DenyHosts lock file: %s" % self.lockpath, e)
+                die("Error deleting DenyHostsMySQL lock file: %s" % self.lockpath, e)
