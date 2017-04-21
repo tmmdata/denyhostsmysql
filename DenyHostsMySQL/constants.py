@@ -34,9 +34,9 @@ PURGE_HISTORY = "purge-history"
 #                           Miscellaneous constants                             #
 #################################################################################
 
-CONFIG_FILE = "/etc/denyhosts.conf"
+CONFIG_FILE = "/etc/denyhostsmysql.conf"
 
-DENY_DELIMITER = "# DenyHosts:"
+DENY_DELIMITER = "# DenyHostsMySQL:"
 ENTRY_DELIMITER = " | "
 
 TIME_SPEC_LOOKUP =  {
