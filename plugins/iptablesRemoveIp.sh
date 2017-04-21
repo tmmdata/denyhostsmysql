@@ -2,7 +2,7 @@
 #
 # Jose' Vargas <https://github.com/josev814>
 # To use this plugin, place it in a directory such as /var/local/bin, and make it executable
-# Then in /etc/denyhosts.conf look for PLUGIN_PURGE, and set the path to the file.
+# Then in /etc/denyhostsmysql.conf look for PLUGIN_PURGE, and set the path to the file.
 # ex: PLUGIN_PURGE=/var/local/bin/iptablesRemoveIp.sh
 #
 # function to purge an ip from the iptables input
@@ -15,10 +15,10 @@ function purgeFromIpTables () {
   $ipTablesLocation -D INPUT $ipRuleId
 }
 
-#function to write to the log file determined by /etc/denyhosts.conf
+#function to write to the log file determined by /etc/denyhostsmysql.conf
 function writeToLog () {
   #Get log file location
-  logFileLocation=`cat /etc/denyhosts.conf | grep ^DAEMON_LOG\ = | awk '{ print $3 }'`
+  logFileLocation=`cat /etc/denyhostsmysql.conf | grep ^DAEMON_LOG\ = | awk '{ print $3 }'`
   
   #use the default logfileformat
   #2016-07-13 21:11:14,380 - denyfileutil: INFO     num entries purged: 1
@@ -41,8 +41,8 @@ function writeToLog () {
 # Get the IP from the cli
 ip=$1
 
-# Get settings from denyhosts.conf
-ipTablesLocation=`cat /etc/denyhosts.conf | grep IPTABLES\ = | awk '{ print $3 }'`
+# Get settings from denyhostsmysql.conf
+ipTablesLocation=`cat /etc/denyhostsmysql.conf | grep IPTABLES\ = | awk '{ print $3 }'`
 
 # Get the output of iptables INPUTS where it matches the given ip and action of DROP then return an array of the ids of the iprules
 ipRuleIds=(`$ipTablesLocation -L INPUT --line-numbers | grep $ip | grep DROP | awk '{ print $1 }'`)
