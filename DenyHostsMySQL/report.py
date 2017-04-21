@@ -20,7 +20,7 @@ class Report:
             warn("syslog is unavailable on this platform")
         self.use_syslog = use_syslog and HAS_SYSLOG
         if self.use_syslog:
-            syslog.openlog("denyhosts")
+            syslog.openlog("denyhostsmysql")
         self.hostname_lookup = is_true(hostname_lookup)
 
     def empty(self):

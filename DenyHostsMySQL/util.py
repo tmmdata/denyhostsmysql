@@ -33,8 +33,8 @@ def setup_logging(prefs, enable_debug, verbose, daemon):
                 # in daemon mode we always log some activity
                 logging.getLogger().setLevel(logging.INFO)
 
-            info = logging.getLogger("denyhosts").info
-            info("DenyHosts launched with the following args:")
+            info = logging.getLogger("denyhostsmysql").info
+            info("DenyHostsMySQL launched with the following args:")
             info("   %s", ' '.join(sys.argv))
             prefs.dump_to_logger()
 
@@ -75,9 +75,9 @@ def parse_host(line):
 
     # the deny file can be in the form:
     # 1) ip_address
-    # 2) sshd: ip_address
+    # 2) mysqld: ip_address
     # 3) ip_address : deny
-    # 4) sshd: ip_address : deny
+    # 4) mysqld: ip_address : deny
 
     # convert form 3 & 4 to 1 & 2
     try:
