@@ -24,12 +24,12 @@ from .sync import Sync
 from .util import die, is_true, parse_host, send_email, is_valid_ip_address
 from .version import VERSION
 
-debug = logging.getLogger("denyhosts").debug
-info = logging.getLogger("denyhosts").info
-error = logging.getLogger("denyhosts").error
-warning = logging.getLogger("denyhosts").warning
+debug = logging.getLogger("denyhostsmysql").debug
+info = logging.getLogger("denyhostsmysql").info
+error = logging.getLogger("denyhostsmysql").error
+warning = logging.getLogger("denyhostsmysql").warning
 
-class DenyHosts(object):
+class DenyHostsMySQL(object):
     def __init__(self, logfile, prefs, lock_file,
                  ignore_offset=0, first_time=0,
                  noemail=0, daemon=0, foreground=0):
@@ -83,7 +83,7 @@ class DenyHosts(object):
             info("Log file size has not changed.  Nothing to do.")
 
         if daemon and not foreground:
-            info("launching DenyHosts daemon (version %s)..." % VERSION)
+            info("launching DenyHostsMySQL daemon (version %s)..." % VERSION)
 
             #logging.getLogger().setLevel(logging.WARN)
 
@@ -98,18 +98,18 @@ class DenyHosts(object):
             else:
                 die("Error creating daemon: %s (%d)" % (retCode[1], retCode[0]))
         elif foreground:
-            info("launching DenyHost (version %s)..." % VERSION)
+            info("launching DenyHostsMySQL (version %s)..." % VERSION)
             self.__lock_file.remove()
             self.runDaemon(logfile, last_offset)
 
 
     def killDaemon(self, signum, frame):
         debug("Received SIGTERM")
-        info("DenyHosts daemon is shutting down")
+        info("DenyHostsMySQL daemon is shutting down")
         # signal handler
 
         # self.__lock_file.remove()
-        # lock will be freed on SIGTERM by denyhosts.py
+        # lock will be freed on SIGTERM by denyhostsmysql.py
         # exception handler (SystemExit)
         sys.exit(0)
 
@@ -130,7 +130,7 @@ class DenyHosts(object):
         #signal.signal(signal.SIGHUP, self.killDaemon)
         signal.signal(signal.SIGTERM, self.killDaemon)
         signal.signal(signal.SIGUSR1, self.toggleDebug)
-        info("DenyHost daemon is now running, pid: %s", os.getpid())
+        info("DenyHostsMySQL daemon is now running, pid: %s", os.getpid())
         info("send daemon process a TERM signal to terminate cleanly")
         info("  eg.  kill -TERM %s", os.getpid())
         self.__lock_file.create()
@@ -167,7 +167,7 @@ class DenyHosts(object):
             info("sync_sleep_ratio: %ld", sync_sleep_ratio)
         else:
             sync_sleep_ratio = None
-            info("denyhost synchronization disabled")
+            info("denyhostsmysql synchronization disabled")
 
         self.daemonLoop(logfile, last_offset, daemon_sleep,
                         purge_time, purge_sleep_ratio, sync_sleep_ratio)
