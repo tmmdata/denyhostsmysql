@@ -7,7 +7,7 @@
 # use in WORK_DIR/restricted-usernames
 #
 # such as: python restricted_from_passwd > $WORK_DIR/restricted-usernames
-# where $WORK_DIR is your DenyHosts WORK_DIR parameter
+# where $WORK_DIR is your DenyHostsMySQL WORK_DIR parameter
 #
 ############################################################################
 
