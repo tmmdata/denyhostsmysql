@@ -63,7 +63,7 @@ class Migrate(DenyFileUtilBase):
         print("you won't purge")
         print("")
         print("If you don't understand, please type 'No' and")
-        print("read /usr/share/doc/denyhosts/README.Debian")
+        print("read /usr/share/doc/denyhostsmysql/README.Debian")
         print("for more info")
         print("")
         response = input("Are you sure that you want do this? (Yes/No)")
@@ -190,7 +190,7 @@ class Purge(DenyFileUtilBase):
                     continue
                 else:
                     if offset == num_lines:
-                        warn("DenyHosts comment line at end of file")
+                        warn("DenyHostsMySQL comment line at end of file")
                         fp.write(line)
                         continue
 
