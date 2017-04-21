@@ -1,21 +1,21 @@
-.TH DENYHOSTS "8" "February 2015" "DenyHosts version: 2.10" "User Commands"
+.TH DENYHOSTSMYSQL "8" "February 2015" "DenyHostsMySQL version: 2.10" "User Commands"
 .SH NAME
 DenyHosts \- version: 2.10
 .SH DESCRIPTION
-.B DenyHosts
-is a python program that automatically blocks ssh attacks by
+.B DenyHostsMySQL
+is a python program that automatically blocks MySQL attacks by
 adding entries to /etc/hosts.deny.
-.B DenyHosts
+.B DenyHostsMySQL
 will also inform system administrators about offending hosts,
 attacked users and suspicious logins.
 
 Usage:
-/usr/sbin/denyhosts [\-f logfile | \fB\-\-file\fR=\fIlogfile]\fR [ \fB\-c\fR configfile | \fB\-\-config\fR=\fIconfigfile]\fR [\-i | \fB\-\-ignore]\fR [\-n | \fB\-\-noemail]\fR [\-\-purge] [\-\-migrate] [\-\-daemon] [\-\-sync] [\-\-version]
+/usr/sbin/denyhostsmysql [\-f logfile | \fB\-\-file\fR=\fIlogfile]\fR [ \fB\-c\fR configfile | \fB\-\-config\fR=\fIconfigfile]\fR [\-i | \fB\-\-ignore]\fR [\-n | \fB\-\-noemail]\fR [\-\-purge] [\-\-migrate] [\-\-daemon] [\-\-sync] [\-\-version]
 .TP
 \fB\-\-file\fR:
 The name of log file to parse
 .HP
-\fB\-\-config\fR: The configuration file to use, typically /etc/denyhosts.conf
+\fB\-\-config\fR: The configuration file to use, typically /etc/denyhostsmysql.conf
 .HP
 \fB\-\-ignore\fR: Ignore last processed offset (start processing from beginning)
 .HP
@@ -31,17 +31,17 @@ The name of log file to parse
 .HP
 \fB\-\-purgeip\fR: remove specified IP address from blocked list
 .HP
-\fB\-\-daemon\fR: run DenyHosts in daemon mode
+\fB\-\-daemon\fR: run DenyHostsMySQL in daemon mode
 .HP
-\fB\-\-foreground\fR: run DenyHosts in foreground mode
+\fB\-\-foreground\fR: run DenyHostsMySQL in foreground mode
 .HP
-\fB\-\-sync\fR: run DenyHosts synchronization mode
+\fB\-\-sync\fR: run DenyHostsMySQL synchronization mode
 .HP
-\fB\-\-version\fR: Prints the version of DenyHosts and exits
+\fB\-\-version\fR: Prints the version of DenyHostsMySQL and exits
 .PP
 Note: multiple \fB\-\-file\fR args can be processed.  If multiple files are provided, \fB\-\-ignore\fR is implied
 .PP
-Note: in a Debian system, the default running mode is \fBdaemon mode\fR and the configuration file is \fB/etc/denyhosts.conf\fR
+Note: in a Debian system, the default running mode is \fBdaemon mode\fR and the configuration file is \fB/etc/denyhostsmysql.conf\fR
 .SS "When run in --daemon mode the following flags are ignored:"
 .HP
 \fB\-\-file\fR, \fB\-\-purge\fR, \fB\-\-migrate\fR, \fB\-\-sync\fR, \fB\-\-verbose\fR
@@ -49,8 +49,8 @@ Note: in a Debian system, the default running mode is \fBdaemon mode\fR and the 
 .SH "SEE ALSO"
 Please refer to http://denyhost.sourceforge.net/faq.html for full documentation.
 .SH AUTHOR
-.B DenyHosts
-was written by Phil Schwartz <phil_schwartz@users.sourceforge.net>
+.B DenyHostsMySQL
+was written by Phil Schwartz <phil_schwartz@users.sourceforge.net> and modified by Jose' Vargas
 .PP
-This manual page was written by Marco Bertorello <marco@bertorello.ns0.it>
+This manual page was written by Marco Bertorello <marco@bertorello.ns0.it> and modified by Jose' Vargas
 for the Debian project (but may be used by others).
