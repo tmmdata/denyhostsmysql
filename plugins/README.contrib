@@ -1,0 +1,15 @@
+Plugin contributions are always welcome.
+
+Please consider the following conventions when submitting a plugin module:
+
+1. Each plugin should accept a single command line arg (the ip address)
+
+2. Each plugin should be named appropriately (that is, the filename should describe what the plugin does).
+
+3. You should include your name and contact information at the top (in the form of comments) of the module.  
+In this way, if somebody has a problem with your plugin, they can contact you rather than us!
+Also, feel free to include a url where a user can find an updated version of your plugin.
+
+4. You should also document any dependencies that your plugin has.
+
+5. Commit the plugin to our github repo (http://github.com/tmmdata/denyhostsmysql) for review and inclusion

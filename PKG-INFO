@@ -1,0 +1,15 @@
+Metadata-Version: 1.0
+Name: DenyHostMySQL
+Version: 2.9
+Summary: DenyHostsMySQL is a utility to help sys admins thwart MySQL hackers
+Home-page: http://github.com/tmmdata/denyhostsmysql
+Author: Jose' Vargas
+Author-email: jose.vargas@tmmdata.com
+License: GPL v2
+Description: 
+        DenyHostsMysql is a python program that automatically blocks MySQL attacks by adding entries to
+        /etc/hosts.deny. DenyHostsMySQL will also inform Linux administrators about offending hosts, attacked
+        users and suspicious logins.
+        Originally authored by Phil Schwartz.
+        
+Platform: UNKNOWN

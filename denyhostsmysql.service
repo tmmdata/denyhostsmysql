@@ -1,0 +1,12 @@
+[Unit]
+Description=MySQL log watcher
+Before=mysqld.service
+
+[Service]
+Type=forking
+ExecStartPre=/bin/rm -f /var/run/denyhostsmysql.pid
+ExecStart=/usr/bin/denyhostsmysql.py --daemon --config=/etc/denyhostsmysql.conf
+PIDFile=/var/run/denyhostsmysql.pid
+
+[Install]
+WantedBy=multi-user.target
