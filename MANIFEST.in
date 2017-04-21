@@ -8,9 +8,9 @@ include MANIFEST.in
 include LICENSE.txt
 include README.txt
 include CHANGELOG.txt
-include DenyHosts/*.py
-include denyhosts.py
-include denyhosts.cfg-dist
+include DenyHostsMySQL/*.py
+include denyhostsmysql.py
+include denyhostsmysql.cfg-dist
 include setup.py
 include daemon-control-dist
 
