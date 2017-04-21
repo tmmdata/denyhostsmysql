@@ -1,14 +1,14 @@
 Metadata-Version: 1.0
-Name: DenyHost
+Name: DenyHostMySQL
 Version: 2.9
-Summary: DenyHost is a utility to help sys admins thwart ssh hackers
-Home-page: http://denyhost.sourceforge.net
-Author: Jesse Smith
-Author-email: jessefrgsmith@yahoo.ca
+Summary: DenyHostsMySQL is a utility to help sys admins thwart MySQL hackers
+Home-page: http://github.com/tmmdata/denyhostsmysql
+Author: Jose' Vargas
+Author-email: jose.vargas@tmmdata.com
 License: GPL v2
 Description: 
-        DenyHost is a python program that automatically blocks ssh attacks by adding entries to
-        /etc/hosts.deny. DenyHosts will also inform Linux administrators about offending hosts, attacked
+        DenyHostsMysql is a python program that automatically blocks MySQL attacks by adding entries to
+        /etc/hosts.deny. DenyHostsMySQL will also inform Linux administrators about offending hosts, attacked
         users and suspicious logins.
         Originally authored by Phil Schwartz.
         
