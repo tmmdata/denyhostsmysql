@@ -8,7 +8,7 @@ def usage():
 try:
     work_dir = sys.argv[1]
 except IndexError:
-    print "you must specify your DenyHosts WORK_DIR"
+    print "you must specify your DenyHostsMySQL WORK_DIR"
     usage()
 
 try:
