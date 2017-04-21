@@ -1,15 +1,15 @@
 import re
 
 #################################################################################
-# REGULAR EXPRESSIONS ARE COOL.  Check out Kodos (http://kodos.sourceforge.net) #
+# REGULAR EXPRESSIONS ARE COOL.  Test Regex at (https://regex101.com/) #
 #################################################################################
 
 #DATE_FORMAT_REGEX = re.compile(r"""(?P<month>[A-z]{3,3})\s*(?P<day>\d+)""")
 
-SSHD_FORMAT_REGEX = re.compile(r""".* (sshd.*:|\[sshd\]) (?P<message>.*)""")
-#SSHD_FORMAT_REGEX = re.compile(r""".* sshd.*: (?P<message>.*)""")
+MYSQLD_FORMAT_REGEX = re.compile(r""".* (mysqld.*:|\[mysqld\]) (?P<message>.*)""")
+#MYSQLD_FORMAT_REGEX = re.compile(r""".* mysqld.*: (?P<message>.*)""")
 
-FAILED_ENTRY_REGEX = re.compile(r"""Failed (?P<method>\S*) for (?P<invalid>invalid user |illegal user )?(?P<user>.*) from (::ffff:)?(?P<host>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})( port \d+)?( ssh2)?$""")
+FAILED_ENTRY_REGEX = re.compile(r"""Failed (?P<method>\S*) for (?P<invalid>invalid user |illegal user )?(?P<user>.*) from (::ffff:)?(?P<host>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})( port \d+)?( mysql)?$""")
 
 FAILED_ENTRY_REGEX2 = re.compile(r"""(?P<invalid>(Illegal|Invalid)) user (?P<user>.*) from (::ffff:)?(?P<host>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$""")
 
@@ -46,7 +46,7 @@ for i in FAILED_ENTRY_REGEX_RANGE:
     FAILED_ENTRY_REGEX_MAP[i] = rx
 
 
-SUCCESSFUL_ENTRY_REGEX = re.compile(r"""Accepted (?P<method>\S+) for (?P<user>.*) from (::ffff:)?(?P<host>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})( port \d+)?( ssh2)?$""")
+SUCCESSFUL_ENTRY_REGEX = re.compile(r"""Accepted (?P<method>\S+) for (?P<user>.*) from (::ffff:)?(?P<host>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})( port \d+)?( mysql)?$""")
 
 TIME_SPEC_REGEX = re.compile(r"""(?P<units>\d*)\s*(?P<period>[smhdwy])?""")
 
