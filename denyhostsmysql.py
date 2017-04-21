@@ -3,24 +3,24 @@ import os
 import platform
 import sys
 import logging
-sys.path.insert(0, '/usr/share/denyhosts')
+sys.path.insert(0, '/usr/share/denyhostsmysql')
 
-import DenyHosts.python_version
+import DenyHostsMySQL.python_version
 
 import getopt
 from getopt import GetoptError
 import traceback
 
-from DenyHosts.util import die, setup_logging, is_true
-from DenyHosts.lockfile import LockFile
-from DenyHosts.prefs import Prefs
-from DenyHosts.version import VERSION
-from DenyHosts.deny_hosts import DenyHosts
-from DenyHosts.denyfileutil import Purge, PurgeIP, Migrate, UpgradeTo099
-from DenyHosts.constants import *
-from DenyHosts.sync import Sync
+from DenyHostsMySQL.util import die, setup_logging, is_true
+from DenyHostsMySQL.lockfile import LockFile
+from DenyHostsMySQL.prefs import Prefs
+from DenyHostsMySQL.version import VERSION
+from DenyHostsMySQL.deny_hosts_mysql import DenyHostsMySQL
+from DenyHostsMySQL.denyfileutil import Purge, PurgeIP, Migrate, UpgradeTo099
+from DenyHostsMySQL.constants import *
+from DenyHostsMySQL.sync import Sync
 
-info = logging.getLogger("denyhosts").info
+info = logging.getLogger("denyhostsmysql").info
 #################################################################################
 
 def usage():
@@ -36,10 +36,10 @@ def usage():
     print(" --purge: expire entries older than your PURGE_DENY setting")
     print(" --purge-all: expire all entries")
     print(" --purgeip: expire designated IP entry immediately")
-    print(" --daemon: run DenyHosts in daemon mode")
-    print(" --foreground: run DenyHosts in foreground mode")
-    print(" --sync: run DenyHosts synchronization mode")
-    print(" --version: Prints the version of DenyHosts and exits")
+    print(" --daemon: run DenyHostsMySQL in daemon mode")
+    print(" --foreground: run DenyHostsMySQL in foreground mode")
+    print(" --sync: run DenyHostsMySQL synchronization mode")
+    print(" --version: Prints the version of DenyHostsMySQL and exits")
 
     print("\n")
     print("Note: multiple --file args can be processed. ")
@@ -124,7 +124,7 @@ if __name__ == '__main__':
         if opt == '--upgrade099':
             upgrade099 = 1
         if opt == '--version':
-            print("DenyHosts version:", VERSION)
+            print("DenyHostsMySQL version:", VERSION)
             sys.exit(0)
 
     # This is generally expected to be in the environment, but there's no
@@ -225,7 +225,7 @@ if __name__ == '__main__':
 
     try:
         for f in logfiles:
-            dh = DenyHosts(f, prefs, lock_file, ignore_offset,
+            dh = DenyHostsMySQL(f, prefs, lock_file, ignore_offset,
                            first_time, noemail, daemon, foreground)
     except KeyboardInterrupt:
         pass
@@ -233,7 +233,7 @@ if __name__ == '__main__':
         pass
     except Exception as e:
         traceback.print_exc(file=sys.stdout)
-        print("\nDenyHosts exited abnormally")
+        print("\nDenyHostsMySQL exited abnormally")
 
 
     if sync_mode and not (daemon or foreground):
