@@ -2,8 +2,8 @@ VERSION?=3.1
 
 clean:
 	rm -rf build
-	rm -rf DenyHosts/*.pyc
+	rm -rf DenyHostsMySQL/*.pyc
 
 tarball: clean
-	cd .. && tar czf denyhosts-$(VERSION).tar.gz denyhosts --exclude=.git
+	cd .. && tar czf denyhostsmysql-$(VERSION).tar.gz denyhostsmysql --exclude=.git
 
