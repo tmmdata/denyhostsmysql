@@ -425,9 +425,9 @@ allowed based on your %s file"""  % (self.__prefs.get("HOSTS_DENY"),
         for line in fp:
             success = invalid = 0
             m = None
-            sshd_m = self.__sshd_format_regex.match(line)
-            if sshd_m:
-                message = sshd_m.group('message')
+            mysqld_m = self.__mysqld_format_regex.match(line)
+            if mysqld_m:
+                message = mysqld_m.group('message')
 
                 # did this line match any of the fixed failed regexes?
                 for i in FAILED_ENTRY_REGEX_RANGE:
@@ -563,7 +563,7 @@ allowed based on your %s file"""  % (self.__prefs.get("HOSTS_DENY"),
 
 
     def init_regex(self):
-        self.__sshd_format_regex = self.get_regex('SSHD_FORMAT_REGEX', SSHD_FORMAT_REGEX)
+        self.__mysqld_format_regex = self.get_regex('MYSQLD_FORMAT_REGEX', MYSQLD_FORMAT_REGEX)
 
         self.__successful_entry_regex = self.get_regex('SUCCESSFUL_ENTRY_REGEX',
                                                        SUCCESSFUL_ENTRY_REGEX)
