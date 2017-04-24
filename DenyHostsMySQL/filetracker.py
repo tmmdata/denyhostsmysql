@@ -1,6 +1,6 @@
 import os
 import logging
-from .constants import SECURE_LOG_OFFSET
+from .constants import MYSQL_LOG_OFFSET
 
 debug = logging.getLogger("filetracker").debug
 
@@ -12,7 +12,7 @@ class FileTracker(object):
 
     def __get_last_offset(self):
         path = os.path.join(self.work_dir,
-                            SECURE_LOG_OFFSET)
+                            MYSQL_LOG_OFFSET)
         first_line = ""
         offset = 0
         try:
@@ -75,7 +75,7 @@ class FileTracker(object):
 
     def save_offset(self, offset):
         path = os.path.join(self.work_dir,
-                            SECURE_LOG_OFFSET)
+                            MYSQL_LOG_OFFSET)
         try:
             fp = open(path, "w")
             fp.write("%s\n" % self.__first_line)
