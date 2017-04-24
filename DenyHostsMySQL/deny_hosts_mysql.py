@@ -425,9 +425,9 @@ allowed based on your %s file"""  % (self.__prefs.get("HOSTS_DENY"),
         for line in fp:
             success = invalid = 0
             m = None
-            sshd_m = self.__sshd_format_regex.match(line)
-            if sshd_m:
-                message = sshd_m.group('message')
+            mysqld_m = self.__mysqld_format_regex.match(line)
+            if mysqld_m:
+                message = mysqld_m.group('message')
 
                 # did this line match any of the fixed failed regexes?
                 for i in FAILED_ENTRY_REGEX_RANGE:
@@ -438,10 +438,6 @@ allowed based on your %s file"""  % (self.__prefs.get("HOSTS_DENY"),
                     if m:
                         invalid = self.is_valid(m)
                         break
-                else: # didn't match any of the failed regex'es, was it succesful?
-                    m = self.__successful_entry_regex.match(message)
-                    if m:
-                        success = 1
 
             # otherwise, did the line match a failed dovelog login attempt?
             if is_true(self.__prefs.get("DETECT_DOVECOT_LOGIN_ATTEMPTS")):
@@ -563,10 +559,7 @@ allowed based on your %s file"""  % (self.__prefs.get("HOSTS_DENY"),
 
 
     def init_regex(self):
-        self.__sshd_format_regex = self.get_regex('SSHD_FORMAT_REGEX', SSHD_FORMAT_REGEX)
-
-        self.__successful_entry_regex = self.get_regex('SUCCESSFUL_ENTRY_REGEX',
-                                                       SUCCESSFUL_ENTRY_REGEX)
+        self.__mysqld_format_regex = self.get_regex('MYSQLD_FORMAT_REGEX', MYSQLD_FORMAT_REGEX)
 
         self.__failed_entry_regex_map = {}
         for i in FAILED_ENTRY_REGEX_RANGE:
@@ -576,16 +569,5 @@ allowed based on your %s file"""  % (self.__prefs.get("HOSTS_DENY"),
                                                               FAILED_ENTRY_REGEX_MAP[i])
 
         self.__failed_dovecot_entry_regex = self.get_regex('FAILED_DOVECOT_ENTRY_REGEX', FAILED_DOVECOT_ENTRY_REGEX)
-
-##        self.__failed_entry_regex = self.get_regex('FAILED_ENTRY_REGEX', FAILED_ENTRY_REGEX)
-##        self.__failed_entry_regex2 = self.get_regex('FAILED_ENTRY_REGEX2', FAILED_ENTRY_REGEX2)
-##        self.__failed_entry_regex3 = self.get_regex('FAILED_ENTRY_REGEX3', FAILED_ENTRY_REGEX3)
-##        self.__failed_entry_regex4 = self.get_regex('FAILED_ENTRY_REGEX4', FAILED_ENTRY_REGEX4)
-##        self.__failed_entry_regex5 = self.get_regex('FAILED_ENTRY_REGEX5', FAILED_ENTRY_REGEX5)
-##        self.__failed_entry_regex6 = self.get_regex('FAILED_ENTRY_REGEX6', FAILED_ENTRY_REGEX6)
-##        self.__failed_entry_regex6 = self.get_regex('FAILED_ENTRY_REGEX7', FAILED_ENTRY_REGEX7)
-##        self.__failed_entry_regex6 = self.get_regex('FAILED_ENTRY_REGEX8', FAILED_ENTRY_REGEX8)
-##        self.__failed_entry_regex6 = self.get_regex('FAILED_ENTRY_REGEX9', FAILED_ENTRY_REGEX9)
-##        self.__failed_entry_regex6 = self.get_regex('FAILED_ENTRY_REGEX10', FAILED_ENTRY_REGEX10)
 
 # vim: set sw=4 et :

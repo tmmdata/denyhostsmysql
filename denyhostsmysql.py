@@ -157,7 +157,7 @@ if __name__ == '__main__':
     setup_logging(prefs, enable_debug, verbose, daemon)
 
     if not logfiles or daemon:
-        logfiles = [prefs.get('SECURE_LOG')]
+        logfiles = [prefs.get('MYSQL_LOG')]
     elif len(logfiles) > 1:
         ignore_offset = 1
 

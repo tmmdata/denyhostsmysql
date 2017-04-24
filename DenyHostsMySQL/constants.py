@@ -4,7 +4,7 @@ import sys
 #        These files will be created relative to prefs WORK_DIR                 #
 #################################################################################
 
-SECURE_LOG_OFFSET = "offset"
+MYSQL_LOG_OFFSET = "offset"
 DENIED_TIMESTAMPS = "denied-timestamps"
 
 ABUSIVE_HOSTS_INVALID = "hosts"
